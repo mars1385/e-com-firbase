@@ -7,43 +7,61 @@ const Menu = () => {
 	//state
 	const [lists, setLists] = useState([
 		{
-			title: 'hats',
+			title: 'bags',
 			imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
 			id: 1,
 			linkUrl: 'shop/hats'
 		},
 		{
-			title: 'jackets',
+			title: 'shoes',
 			imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
 			id: 2,
-			linkUrl: 'shop/jackets'
+			linkUrl: 'shop/shoes'
 		},
 		{
-			title: 'sneakers',
+			title: 'watches',
 			imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
 			id: 3,
-			linkUrl: 'shop/sneakers'
+			linkUrl: 'shop/watches'
+		},
+		{
+			title: 't-shirts',
+			imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
+			id: 4,
+			linkUrl: 'shop/t-shirts'
+		},
+		{
+			title: 'jeans',
+			imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
+			id: 5,
+			linkUrl: 'shop/jeans'
+		},
+		{
+			title: 'jacket',
+			imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
+			id: 6,
+			linkUrl: 'shop/jacket'
 		},
 		{
 			title: 'womens',
 			imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
 			size: 'large',
-			id: 4,
+			id: 7,
 			linkUrl: 'shop/womens'
 		},
 		{
 			title: 'mens',
 			imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
 			size: 'large',
-			id: 5,
+			id: 8,
 			linkUrl: 'shop/mens'
 		}
 	]);
 	//jsx
 	return (
 		<div className='menu'>
-			{lists.map(({ title, id, imageUrl, size }) => (
-				<MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+			{lists.map(({ id, ...otherProps }) => (
+				<MenuItem key={id} {...otherProps} />
 			))}
 		</div>
 	);
