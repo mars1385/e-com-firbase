@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import './Auth.scss';
 import InputGroup from '../../components/form-input/InputGroup';
 import ButtonGroup from '../../components/form-input/ButtonGroup';
+//auth
+import { signInWithGoogle } from '../../utils/firebase/firebase';
 
 const Login = () => {
 	//component state
@@ -32,7 +34,12 @@ const Login = () => {
 			<form onSubmit={onSubmit}>
 				<InputGroup name='email' value={email} onChange={onChange} label='email' />
 				<InputGroup label='password' type='password' name='password' value={password} onChange={onChange} />
-				<ButtonGroup type='submit'>Log in</ButtonGroup>
+				<div className='buttons'>
+					<ButtonGroup type='submit'>Log in</ButtonGroup>
+					<ButtonGroup onClick={signInWithGoogle} googleSignIn>
+						Sign In with Google
+					</ButtonGroup>
+				</div>
 			</form>
 		</div>
 	);

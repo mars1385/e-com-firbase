@@ -3,9 +3,9 @@ import React from 'react';
 
 import './ButtonGroup.scss';
 
-const ButtonGroup = ({ children, ...otherProps }) => {
+const ButtonGroup = ({ children, googleSignIn, ...otherProps }) => {
 	return (
-		<button className='custom-btn' {...otherProps}>
+		<button className={`${googleSignIn ? 'google-sign-in' : ''} custom-btn`} {...otherProps}>
 			{children}
 		</button>
 	);
