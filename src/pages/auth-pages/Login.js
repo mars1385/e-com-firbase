@@ -4,7 +4,7 @@ import './Auth.scss';
 import InputGroup from '../../components/form-input/InputGroup';
 import ButtonGroup from '../../components/form-input/ButtonGroup';
 //auth
-import { signInWithGoogle } from '../../utils/firebase/firebase';
+import { auth, signInWithGoogle } from '../../utils/firebase/firebase';
 
 const Login = () => {
 	//component state
@@ -22,10 +22,15 @@ const Login = () => {
 	};
 
 	//log in
-	const onSubmit = e => {
+	const onSubmit = async e => {
 		e.preventDefault();
-		setEmail('');
-		setPassword('');
+		try {
+			await auth.signInWithEmailAndPassword(email, password);
+			setEmail('');
+			setPassword('');
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	//jsx
 	return (

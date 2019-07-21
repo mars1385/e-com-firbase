@@ -1,6 +1,11 @@
 //import
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import PrivateRoute from './components/validate/PrivateRoute';
+//redux
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import { setCurrentUser } from './redux/actions/userActions';
 //pages
 import HomePage from './pages/home-page/HomePage';
 import ShopPage from './pages/shop-page/ShopPage';
@@ -9,35 +14,42 @@ import Login from './pages/auth-pages/Login';
 //header component
 import Header from './components/header/Header';
 //firebase auth
-import { auth } from './utils/firebase/firebase';
+import { auth, createUserDoc } from './utils/firebase/firebase';
 
 import './App.css';
 
 function App() {
-	//state
-	const [currentUser, setCurrentUser] = useState(null);
-	//component did mount & update
+	//component did mount
 	useEffect(() => {
-		const unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-			setCurrentUser(user);
-			console.log(currentUser);
+		const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+			if (userAuth) {
+				const user = await createUserDoc(userAuth);
+
+				user.onSnapshot(snapShot => {
+					store.dispatch(setCurrentUser({ id: snapShot.id, ...snapShot.data() }));
+				});
+			} else {
+				store.dispatch(setCurrentUser(userAuth));
+			}
 		});
 		//component will unMount
 		return () => {
 			unsubscribeFromAuth();
 		};
-	});
+	}, []);
 	//jsx
 	return (
-		<Router>
-			<div>
-				<Header currentUser={currentUser} />
-				<Route exact path='/' component={HomePage} />
-				<Route exact path='/shop' component={ShopPage} />
-				<Route exact path='/login' component={Login} />
-				<Route exact path='/register' component={Register} />
-			</div>
-		</Router>
+		<Provider store={store}>
+			<Router>
+				<div>
+					<Header />
+					<Route exact path='/' component={HomePage} />
+					<Route exact path='/shop' component={ShopPage} />
+					<Route exact path='/login' component={Login} />
+					<Route exact path='/register' component={Register} />
+				</div>
+			</Router>
+		</Provider>
 	);
 }
 

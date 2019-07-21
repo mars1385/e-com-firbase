@@ -5,8 +5,13 @@ import './Header.scss';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 //auth
 import { auth } from '../../utils/firebase/firebase';
+//redux
+import { useSelector } from 'react-redux';
 
-const Header = ({ currentUser }) => {
+const Header = () => {
+	//redux state
+	const currentUser = useSelector(state => state.user.currentUser);
+	//jsx
 	return (
 		<div className='site-navbar'>
 			<Link to='/' className='logo-container'>
