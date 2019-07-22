@@ -1,6 +1,6 @@
 //import
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import PrivateRoute from './components/validate/PrivateRoute';
 //redux
 import { Provider } from 'react-redux';

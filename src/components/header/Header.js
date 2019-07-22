@@ -3,6 +3,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
+//bag components
+import BagIcon from '../shopping-bag-icon/BagIcon';
+import BagDropDown from '../bag-icon-drop-down/BagDropDown';
 //auth
 import { auth } from '../../utils/firebase/firebase';
 //redux
@@ -11,6 +14,7 @@ import { useSelector } from 'react-redux';
 const Header = () => {
 	//redux state
 	const currentUser = useSelector(state => state.user.currentUser);
+	const hidden = useSelector(state => state.toggle.hidden);
 	//jsx
 	return (
 		<div className='site-navbar'>
@@ -38,7 +42,9 @@ const Header = () => {
 						</Link>
 					</div>
 				)}
+				<BagIcon />
 			</div>
+			{hidden === false ? <BagDropDown /> : null}
 		</div>
 	);
 };

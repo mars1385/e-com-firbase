@@ -4,12 +4,23 @@ import './Auth.scss';
 import InputGroup from '../../components/form-input/InputGroup';
 import ButtonGroup from '../../components/form-input/ButtonGroup';
 import { auth, createUserDoc } from '../../utils/firebase/firebase';
-const Register = () => {
+//redux
+import { useSelector } from 'react-redux';
+
+const Register = props => {
 	//component state
 	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
+	//redux state
+	const currentUser = useSelector(state => state.user.currentUser);
+	//component did mount & update
+	useEffect(() => {
+		if (currentUser) {
+			props.history.push('/');
+		}
+	});
 	//register filed change
 	const onChange = e => {
 		const { name, value } = e.target;
