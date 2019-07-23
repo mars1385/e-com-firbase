@@ -20,9 +20,7 @@ const Collections = () => {
 					</div>
 					<div className='row mb-5 preview'>
 						{collections.map(collection => {
-							return collection.items.map(({ id, ...otherItemProps }) => (
-								<CollectionItem key={id} {...otherItemProps} />
-							));
+							return collection.items.map(item => <CollectionItem key={item.id} item={item} />);
 						})}
 					</div>
 				</div>

@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux';
 const Header = () => {
 	//redux state
 	const currentUser = useSelector(state => state.user.currentUser);
-	const hidden = useSelector(state => state.toggle.hidden);
+	const hidden = useSelector(state => state.cart.hidden);
 	//jsx
 	return (
 		<div className='site-navbar'>

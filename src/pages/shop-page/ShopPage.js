@@ -1,5 +1,5 @@
 //import
-import React, { useState } from 'react';
+import React from 'react';
 
 import Collections from '../../components/collections/Collections';
 

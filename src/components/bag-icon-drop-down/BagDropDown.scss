@@ -15,10 +15,10 @@
 		height: 240px;
 		display: flex;
 		flex-direction: column;
-		// overflow: scroll;
+		overflow: scroll;
 	}
 
-	button {
+	.custom-btn {
 		margin-top: auto;
 		background-color: #28a745;
 
