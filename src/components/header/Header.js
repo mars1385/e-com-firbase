@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.scss';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
+import { createStructuredSelector } from 'reselect';
 //bag components
 import BagIcon from '../shopping-bag-icon/BagIcon';
 import BagDropDown from '../bag-icon-drop-down/BagDropDown';
@@ -10,11 +11,17 @@ import BagDropDown from '../bag-icon-drop-down/BagDropDown';
 import { auth } from '../../utils/firebase/firebase';
 //redux
 import { useSelector } from 'react-redux';
+import { currentUserSelector } from '../../redux/selectors/userSelectors';
+import { toggle } from '../../redux/selectors/cartSelectors';
 
 const Header = () => {
 	//redux state
-	const currentUser = useSelector(state => state.user.currentUser);
-	const hidden = useSelector(state => state.cart.hidden);
+	const { currentUser, hidden } = useSelector(
+		createStructuredSelector({
+			currentUser: currentUserSelector,
+			hidden: toggle
+		})
+	);
 	//jsx
 	return (
 		<div className='site-navbar'>

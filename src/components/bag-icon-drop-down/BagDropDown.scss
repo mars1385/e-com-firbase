@@ -16,6 +16,12 @@
 		display: flex;
 		flex-direction: column;
 		overflow: scroll;
+
+		.empty-msg {
+			color: red;
+			margin: auto;
+			font-size: 1.3rem;
+		}
 	}
 
 	.custom-btn {

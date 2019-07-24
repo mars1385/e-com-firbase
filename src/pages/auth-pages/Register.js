@@ -6,6 +6,7 @@ import ButtonGroup from '../../components/form-input/ButtonGroup';
 import { auth, createUserDoc } from '../../utils/firebase/firebase';
 //redux
 import { useSelector } from 'react-redux';
+import { currentUserSelector } from '../../redux/selectors/userSelectors';
 
 const Register = props => {
 	//component state
@@ -14,7 +15,7 @@ const Register = props => {
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
 	//redux state
-	const currentUser = useSelector(state => state.user.currentUser);
+	const currentUser = useSelector(currentUserSelector);
 	//component did mount & update
 	useEffect(() => {
 		if (currentUser) {

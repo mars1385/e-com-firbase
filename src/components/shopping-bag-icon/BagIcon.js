@@ -5,12 +5,13 @@ import './BagIcon.scss';
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 import { setToggle } from '../../redux/actions/cartActions';
+import { countCartItemsSelector } from '../../redux/selectors/cartSelectors';
 
 const BagIcon = () => {
 	//redux
-	const count = useSelector(state => state.cart.cartItemsCount);
+	const count = useSelector(countCartItemsSelector);
 	const dispatch = useDispatch();
-
+	//on and off
 	const onClick = () => {
 		dispatch(setToggle());
 	};

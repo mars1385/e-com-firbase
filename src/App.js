@@ -11,6 +11,7 @@ import HomePage from './pages/home-page/HomePage';
 import ShopPage from './pages/shop-page/ShopPage';
 import Register from './pages/auth-pages/Register';
 import Login from './pages/auth-pages/Login';
+import CartCheckout from './pages/cart-checkout/CartCheckout';
 //header component
 import Header from './components/header/Header';
 //firebase auth
@@ -47,6 +48,7 @@ function App() {
 					<Route exact path='/shop' component={ShopPage} />
 					<Route exact path='/login' component={Login} />
 					<Route exact path='/register' component={Register} />
+					<CartCheckout exact path='/checkout' component={CartCheckout} />
 				</div>
 			</Router>
 		</Provider>

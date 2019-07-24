@@ -4,8 +4,7 @@ import { addItemToCart } from '../../utils/cart';
 
 const initialState = {
 	hidden: true,
-	cartItems: [],
-	cartItemsCount: 0
+	cartItems: []
 };
 
 export default function(state = initialState, action) {
@@ -15,8 +14,7 @@ export default function(state = initialState, action) {
 		case ADD_CART_ITEM:
 			return {
 				...state,
-				cartItems: addItemToCart(state.cartItems, action.payload),
-				cartItemsCount: state.cartItemsCount + 1
+				cartItems: addItemToCart(state.cartItems, action.payload)
 			};
 		default:
 			return state;

@@ -5,6 +5,7 @@ import InputGroup from '../../components/form-input/InputGroup';
 import ButtonGroup from '../../components/form-input/ButtonGroup';
 //redux
 import { useSelector } from 'react-redux';
+import { currentUserSelector } from '../../redux/selectors/userSelectors';
 //auth
 import { auth, signInWithGoogle } from '../../utils/firebase/firebase';
 
@@ -13,7 +14,7 @@ const Login = props => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	//redux state
-	const currentUser = useSelector(state => state.user.currentUser);
+	const currentUser = useSelector(currentUserSelector);
 	//component did mount & update
 	useEffect(() => {
 		if (currentUser) {
