@@ -1,6 +1,6 @@
 //import
-import { HIDDEN, ADD_CART_ITEM } from '../actions/types';
-import { addItemToCart } from '../../utils/cart';
+import { HIDDEN, ADD_CART_ITEM, REMOVE_ITEM_FROM_CART, REMOVE_ITEM } from '../actions/types';
+import { addItemToCart, removeItem } from '../../utils/cart';
 
 const initialState = {
 	hidden: true,
@@ -16,6 +16,10 @@ export default function(state = initialState, action) {
 				...state,
 				cartItems: addItemToCart(state.cartItems, action.payload)
 			};
+		case REMOVE_ITEM_FROM_CART:
+			return { ...state, cartItems: state.cartItems.filter(item => item.id !== action.payload.id) };
+		case REMOVE_ITEM:
+			return { ...state, cartItems: removeItem(state.cartItems, action.payload) };
 		default:
 			return state;
 	}
