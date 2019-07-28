@@ -1,11 +1,11 @@
 //import
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import PrivateRoute from './components/validate/PrivateRoute';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 //redux
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import reduxStore from './redux/store';
 import { setCurrentUser } from './redux/actions/userActions';
+import { PersistGate } from 'redux-persist/integration/react';
 //pages
 import HomePage from './pages/home-page/HomePage';
 import ShopPage from './pages/shop-page/ShopPage';
@@ -20,6 +20,7 @@ import { auth, createUserDoc } from './utils/firebase/firebase';
 import './App.css';
 
 function App() {
+	const { store, persistor } = reduxStore;
 	//component did mount
 	useEffect(() => {
 		const unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -41,16 +42,18 @@ function App() {
 	//jsx
 	return (
 		<Provider store={store}>
-			<Router>
-				<div>
-					<Header />
-					<Route exact path='/' component={HomePage} />
-					<Route exact path='/shop' component={ShopPage} />
-					<Route exact path='/login' component={Login} />
-					<Route exact path='/register' component={Register} />
-					<CartCheckout exact path='/checkout' component={CartCheckout} />
-				</div>
-			</Router>
+			<PersistGate persistor={persistor}>
+				<Router>
+					<div>
+						<Header />
+						<Route exact path='/' component={HomePage} />
+						<Route exact path='/shop' component={ShopPage} />
+						<Route exact path='/login' component={Login} />
+						<Route exact path='/register' component={Register} />
+						<Route exact path='/checkout' component={CartCheckout} />
+					</div>
+				</Router>
+			</PersistGate>
 		</Provider>
 	);
 }

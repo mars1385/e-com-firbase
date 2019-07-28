@@ -1,11 +1,13 @@
 //import
-import React, { useState } from 'react';
-import SHOP_DATA from './shopData';
+import React from 'react';
 import CollectionItem from './CollectionItem';
+//redux
+import { useSelector } from 'react-redux';
+import { shopCollectionsSelector } from '../../redux/selectors/shopSelectors';
 
 const Collections = () => {
-	//state
-	const [collections, setCollections] = useState(SHOP_DATA);
+	//redux state
+	const collections = useSelector(shopCollectionsSelector);
 	//jsx
 	return (
 		<div className='container mt-2'>
@@ -26,8 +28,8 @@ const Collections = () => {
 				</div>
 				<div className='col-md-3 order-2'>
 					<div className='border mb-4 rounded p-4'>
-						<h2 className='mb-4 h6 text-uppercase text-black d-block'>Categories</h2>
-						<ul className='list-unstyled b-0'>
+						<h2 className='mb-4 h6 text-uppercase text-black d-block text-center'>Categories</h2>
+						<ul className='list-unstyled b-0  text-center'>
 							<li className='mb-1'>Bags</li>
 							<li className='mb-1'>Shoes</li>
 							<li className='mb-1'>Watches</li>
