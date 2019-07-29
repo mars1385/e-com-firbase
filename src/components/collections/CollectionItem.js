@@ -21,7 +21,7 @@ const CollectionItem = ({ item }) => {
 			<div className='image rounded' style={{ backgroundImage: `url(${imageUrl})` }} />
 			<div className='collection-footer'>
 				<span className='name'>{name}</span>
-				<span className='price'>{price}</span>
+				<span className='price'>${price}</span>
 			</div>
 			<ButtonGroup onClick={onAddItem}>Add To Cart</ButtonGroup>
 		</div>

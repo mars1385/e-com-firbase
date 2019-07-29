@@ -6,7 +6,7 @@ const initialState = {
 			title: 'bags',
 			imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
 			id: 1,
-			linkUrl: 'shop/hats'
+			linkUrl: 'shop/bags'
 		},
 		{
 			title: 'shoes',
@@ -24,7 +24,7 @@ const initialState = {
 			title: 't-shirts',
 			imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
 			id: 4,
-			linkUrl: 'shop/t-shirts'
+			linkUrl: 'shop/tShirts'
 		},
 		{
 			title: 'jeans',
@@ -36,7 +36,7 @@ const initialState = {
 			title: 'jacket',
 			imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
 			id: 6,
-			linkUrl: 'shop/jacket'
+			linkUrl: 'shop/jackets'
 		},
 		{
 			title: 'womens',
