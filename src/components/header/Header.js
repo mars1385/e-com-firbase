@@ -29,22 +29,22 @@ const Header = () => {
 				<Logo className='logo' />
 			</Link>
 			<div className='options'>
-				<Link className='option mx-1' to='/'>
+				<Link className='option ' to='/'>
 					Home
 				</Link>
-				<Link className='option mx-1' to='/shop'>
+				<Link className='option ' to='/shop'>
 					Shop
 				</Link>
 				{currentUser ? (
-					<div className='option mx-1' onClick={() => auth.signOut()}>
+					<div className='option ' onClick={() => auth.signOut()}>
 						Sign Out
 					</div>
 				) : (
-					<div className='option mx-1'>
-						<Link className='option mx-1' to='/login'>
+					<div>
+						<Link className='option ' to='/login'>
 							Log in
 						</Link>
-						<Link className='option mx-1' to='/register'>
+						<Link className='option ' to='/register'>
 							Sign in
 						</Link>
 					</div>

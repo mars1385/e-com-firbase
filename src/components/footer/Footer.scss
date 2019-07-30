@@ -1,0 +1,59 @@
+.site-footer {
+	padding: 4em 0;
+
+	&.custom-border-top {
+		border-top: 1px solid #f9f9f9;
+	}
+	ul li {
+		margin-bottom: 10px;
+	}
+	ul li a {
+		color: #5c626e;
+	}
+	ul li a:hover {
+		color: #ee4266;
+	}
+	.footer-heading {
+		font-size: 14px;
+		color: #25262a;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+	}
+
+	.block-5 {
+		ul,
+		ul li {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			line-height: 1.5;
+		}
+
+		ul li {
+			padding-left: 30px;
+			position: relative;
+			margin-bottom: 15px;
+			color: #25262a;
+		}
+		ul li:before {
+			top: 0;
+			font-family: 'icomoon';
+			content: '';
+			position: absolute;
+			left: 0;
+			font-size: 20px;
+			line-height: 1;
+			color: #ee4266;
+		}
+
+		ul li.address:before {
+			content: '\e8b4';
+		}
+		.block-5 ul li.email:before {
+			content: '\f0e0';
+		}
+		.block-5 ul li.phone:before {
+			content: '\f095';
+		}
+	}
+}

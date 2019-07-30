@@ -4,3 +4,17 @@
 	align-items: center;
 	padding: 20px 80px;
 }
+
+.title-section h2 {
+	padding-left: 30px;
+	border-left: 4px solid #ee4266;
+	display: inline-block;
+	color: #000;
+
+	-section.text-center h2 {
+		border-left: none;
+		position: relative;
+		padding-left: 0px;
+		padding-bottom: 20px;
+	}
+}

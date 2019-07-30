@@ -11,7 +11,14 @@ const Menu = () => {
 	const collections = useSelector(collectionsSelector);
 	//jsx
 	return (
-		<div className='menu'>
+		<div className='menu mt-5'>
+			<div className='container'>
+				<div class='title-section mb-5 '>
+					<h2 class='text-uppercase'>
+						<span class='d-block'>Discover</span> The Collections
+					</h2>
+				</div>
+			</div>
 			{collections.map(({ id, ...otherProps }) => (
 				<MenuItem key={id} {...otherProps} />
 			))}

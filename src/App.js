@@ -12,8 +12,9 @@ import ShopPage from './pages/shop-page/ShopPage';
 import Register from './pages/auth-pages/Register';
 import Login from './pages/auth-pages/Login';
 import CartCheckout from './pages/cart-checkout/CartCheckout';
-//header component
+//header & footer component
 import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 //firebase auth
 import { auth, createUserDoc } from './utils/firebase/firebase';
 
@@ -51,6 +52,7 @@ function App() {
 						<Route exact path='/login' component={Login} />
 						<Route exact path='/register' component={Register} />
 						<Route exact path='/checkout' component={CartCheckout} />
+						<Footer />
 					</div>
 				</Router>
 			</PersistGate>

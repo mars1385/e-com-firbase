@@ -1,0 +1,44 @@
+.showcase {
+	height: 100vh;
+	background: #f9f9f9;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	overflow: hidden;
+	min-height: 600px;
+	height: calc(100vh - 174px);
+
+	.row {
+		min-height: 600px;
+		height: calc(100vh - 174px);
+	}
+	h4 {
+		font-size: 1rem;
+		font-weight: normal;
+		color: #000;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+	}
+	h1 {
+		font-size: 3.2rem;
+		font-weight: 900;
+		color: #000;
+		margin-bottom: 30px;
+	}
+
+	.showcase-content {
+		margin-top: 20%;
+		text-align: center;
+
+		.link {
+			width: 50%;
+			margin: auto;
+			font-weight: bold;
+			&:hover {
+				border: 1px solid #28a745;
+				color: #28a745;
+				background-color: white;
+			}
+		}
+	}
+}
