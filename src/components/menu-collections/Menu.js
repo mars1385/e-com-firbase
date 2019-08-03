@@ -13,9 +13,9 @@ const Menu = () => {
 	return (
 		<div className='menu mt-5'>
 			<div className='container'>
-				<div class='title-section mb-5 '>
-					<h2 class='text-uppercase'>
-						<span class='d-block'>Discover</span> The Collections
+				<div className='title-section mb-5 '>
+					<h2 className='text-uppercase'>
+						<span className='d-block'>Discover</span> The Collections
 					</h2>
 				</div>
 			</div>

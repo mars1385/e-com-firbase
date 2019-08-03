@@ -16,7 +16,7 @@ import CartCheckout from './pages/cart-checkout/CartCheckout';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 //firebase auth
-import { auth, createUserDoc } from './utils/firebase/firebase';
+import { auth, createUserDoc, addCollectionAndDoc } from './utils/firebase/firebase';
 
 import './App.css';
 

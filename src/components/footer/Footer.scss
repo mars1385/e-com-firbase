@@ -15,6 +15,7 @@
 	}
 	.footer-heading {
 		font-size: 14px;
+		font-weight: bold;
 		color: #25262a;
 		letter-spacing: 0.2em;
 		text-transform: uppercase;
@@ -34,26 +35,19 @@
 			position: relative;
 			margin-bottom: 15px;
 			color: #25262a;
+
+			i {
+				margin-right: 0.8rem;
+				color: #ee4266;
+			}
 		}
 		ul li:before {
 			top: 0;
-			font-family: 'icomoon';
-			content: '';
 			position: absolute;
 			left: 0;
 			font-size: 20px;
 			line-height: 1;
 			color: #ee4266;
-		}
-
-		ul li.address:before {
-			content: '\e8b4';
-		}
-		.block-5 ul li.email:before {
-			content: '\f0e0';
-		}
-		.block-5 ul li.phone:before {
-			content: '\f095';
 		}
 	}
 }

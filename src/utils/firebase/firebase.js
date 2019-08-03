@@ -33,6 +33,11 @@ export const createUserDoc = async (userAuth, otherData) => {
 	return userRef;
 };
 
+//adding items
+export const addCollectionAndDoc = (collectionName, items) => {
+	const collectionRef = fireStore.collection(collectionName);
+};
+
 //exports
 export const auth = firebase.auth();
 export const fireStore = firebase.firestore();
