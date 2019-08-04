@@ -22,6 +22,7 @@ const Header = () => {
 			hidden: toggle
 		})
 	);
+
 	//jsx
 	return (
 		<div className='site-navbar'>

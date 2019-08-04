@@ -33,9 +33,38 @@ export const createUserDoc = async (userAuth, otherData) => {
 	return userRef;
 };
 
+//forming collections items
+export const newCollectionsItems = collectionsSnapShot => {
+	const newCollections = collectionsSnapShot.docs.map(doc => {
+		const { title, items } = doc.data();
+
+		return {
+			routeName: encodeURI(title.toLowerCase()),
+			id: doc.id,
+			title,
+			items
+		};
+	});
+
+	return newCollections.reduce((acc, collection) => {
+		acc[collection.title.toLowerCase()] = collection;
+		return acc;
+	}, {});
+};
+
 //adding items
-export const addCollectionAndDoc = (collectionName, items) => {
+export const addCollectionAndDoc = async (collectionName, objects) => {
 	const collectionRef = fireStore.collection(collectionName);
+
+	const batch = fireStore.batch();
+	objects.forEach(object => {
+		const newDocRef = collectionRef.doc();
+		object.items.forEach(item => {
+			item.createdAt = new Date();
+		});
+		batch.set(newDocRef, object);
+	});
+	return await batch.commit();
 };
 
 //exports

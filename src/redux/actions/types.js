@@ -3,3 +3,4 @@ export const HIDDEN = 'HIDDEN';
 export const ADD_CART_ITEM = 'ADD_CART_ITEM';
 export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const GET_COLLECTION_DATA = 'GET_COLLECTION_DATA';

@@ -1,10 +1,39 @@
 //import
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Link } from 'react-router-dom';
 import Collections from '../../components/collections/Collections';
 import Categories from '../categories/Categories';
+import Spinner from '../../components/spinner/Spinner';
+//redux
+import { useDispatch } from 'react-redux';
+import { setCollectionData } from '../../redux/actions/shopActions';
+//firebase
+import { fireStore, newCollectionsItems } from '../../utils/firebase/firebase';
+
+//our component with spinner
+const CollectionsWithSpinner = Spinner(Collections);
+const CategoriesWithSpinner = Spinner(Categories);
 
 const ShopPage = ({ match }) => {
+	//component state
+	const [loading, setLoading] = useState(true);
+	//redux
+	const dispatch = useDispatch();
+	//component did mount
+	useEffect(() => {
+		const collectionsRef = fireStore.collection('collections');
+
+		const unsubscribeFromCollections = collectionsRef.onSnapshot(snapShot => {
+			const newCollections = newCollectionsItems(snapShot);
+			dispatch(setCollectionData(newCollections));
+			setLoading(false);
+		});
+
+		//will un mount
+		return () => {
+			unsubscribeFromCollections();
+		};
+	}, []);
 	//jsx
 	return (
 		<div className='shop'>
@@ -12,8 +41,15 @@ const ShopPage = ({ match }) => {
 				<div className='row'>
 					{/* our shop route */}
 
-					<Route exact path={`${match.path}`} component={Collections} />
-					<Route path={`${match.path}/:categoryId`} component={Categories} />
+					<Route
+						exact
+						path={`${match.path}`}
+						render={props => <CollectionsWithSpinner loading={loading} {...props} />}
+					/>
+					<Route
+						path={`${match.path}/:categoryId`}
+						render={props => <CategoriesWithSpinner loading={loading} {...props} />}
+					/>
 					{/* end */}
 					<div className='col-md-3 order-2'>
 						<div className='border mb-4 rounded p-4'>
@@ -29,7 +65,7 @@ const ShopPage = ({ match }) => {
 									<Link to={`${match.path}/watches`}>Watches</Link>
 								</li>
 								<li className='mb-1'>
-									<Link to={`${match.path}/tShirts`}>T-shirts</Link>
+									<Link to={`${match.path}/t-shirts`}>T-shirts</Link>
 								</li>
 								<li className='mb-1'>
 									<Link to={`${match.path}/jeans`}>Jeans</Link>
