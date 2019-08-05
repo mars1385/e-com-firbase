@@ -1,38 +1,36 @@
 //import
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Link } from 'react-router-dom';
 import Collections from '../../components/collections/Collections';
 import Categories from '../categories/Categories';
 import Spinner from '../../components/spinner/Spinner';
 //redux
-import { useDispatch } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import {
+	dataLoadingSelector,
+	errorMessageSelector,
+	isDataLoadedSelector
+} from '../../redux/selectors/shopSelectors';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCollectionData } from '../../redux/actions/shopActions';
-//firebase
-import { fireStore, newCollectionsItems } from '../../utils/firebase/firebase';
 
 //our component with spinner
 const CollectionsWithSpinner = Spinner(Collections);
 const CategoriesWithSpinner = Spinner(Categories);
 
 const ShopPage = ({ match }) => {
-	//component state
-	const [loading, setLoading] = useState(true);
 	//redux
+	const { loading, errorMessage, isDataLoaded } = useSelector(
+		createStructuredSelector({
+			loading: dataLoadingSelector,
+			errorMessage: errorMessageSelector,
+			isDataLoaded: isDataLoadedSelector
+		})
+	);
 	const dispatch = useDispatch();
 	//component did mount
 	useEffect(() => {
-		const collectionsRef = fireStore.collection('collections');
-
-		const unsubscribeFromCollections = collectionsRef.onSnapshot(snapShot => {
-			const newCollections = newCollectionsItems(snapShot);
-			dispatch(setCollectionData(newCollections));
-			setLoading(false);
-		});
-
-		//will un mount
-		return () => {
-			unsubscribeFromCollections();
-		};
+		dispatch(setCollectionData());
 	}, []);
 	//jsx
 	return (
@@ -48,7 +46,7 @@ const ShopPage = ({ match }) => {
 					/>
 					<Route
 						path={`${match.path}/:categoryId`}
-						render={props => <CategoriesWithSpinner loading={loading} {...props} />}
+						render={props => <CategoriesWithSpinner loading={!isDataLoaded} {...props} />}
 					/>
 					{/* end */}
 					<div className='col-md-3 order-2'>
