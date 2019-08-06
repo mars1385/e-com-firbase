@@ -12,7 +12,7 @@ import {
 	isDataLoadedSelector
 } from '../../redux/selectors/shopSelectors';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCollectionData } from '../../redux/actions/shopActions';
+import { setLoadingData } from '../../redux/actions/shopActions';
 
 //our component with spinner
 const CollectionsWithSpinner = Spinner(Collections);
@@ -30,7 +30,7 @@ const ShopPage = ({ match }) => {
 	const dispatch = useDispatch();
 	//component did mount
 	useEffect(() => {
-		dispatch(setCollectionData());
+		dispatch(setLoadingData());
 	}, []);
 	//jsx
 	return (
