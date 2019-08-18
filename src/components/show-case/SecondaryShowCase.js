@@ -21,7 +21,7 @@ const SecondaryShowCase = () => {
 						</div>
 					</div>
 					<div className='col-md-6 order-1 align-self-end'>
-						<img src={require('../../assets/img/secShowCase.png')} alt='Image' className='img-fluid' />
+						<img src={require('../../assets/img/secShowCase.png')} alt='showCase' className='img-fluid' />
 					</div>
 				</div>
 			</div>

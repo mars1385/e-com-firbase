@@ -7,12 +7,11 @@ import { createStructuredSelector } from 'reselect';
 //bag components
 import BagIcon from '../shopping-bag-icon/BagIcon';
 import BagDropDown from '../bag-icon-drop-down/BagDropDown';
-//auth
-import { auth } from '../../utils/firebase/firebase';
 //redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { currentUserSelector } from '../../redux/selectors/userSelectors';
 import { toggle } from '../../redux/selectors/cartSelectors';
+import { signOutStart } from '../../redux/actions/userActions';
 
 const Header = () => {
 	//redux state
@@ -22,7 +21,7 @@ const Header = () => {
 			hidden: toggle
 		})
 	);
-
+	const dispatch = useDispatch();
 	//jsx
 	return (
 		<div className='site-navbar'>
@@ -37,7 +36,7 @@ const Header = () => {
 					Shop
 				</Link>
 				{currentUser ? (
-					<div className='option ' onClick={() => auth.signOut()}>
+					<div className='option ' onClick={() => dispatch(signOutStart())}>
 						Sign Out
 					</div>
 				) : (

@@ -2,7 +2,7 @@
 import { LOADING_DATA } from '../actions/types';
 import { getDataSuccess, getDataFailed } from '../actions/shopActions';
 
-import { takeEvery, call, put } from 'redux-saga/effects';
+import { takeLatest, call, put } from 'redux-saga/effects';
 
 import { fireStore, newCollectionsItems } from '../../utils/firebase/firebase';
 
@@ -22,5 +22,5 @@ export function* setCollectionData() {
 }
 //start
 export function* setCollectionDataStart() {
-	yield takeEvery(LOADING_DATA, setCollectionData);
+	yield takeLatest(LOADING_DATA, setCollectionData);
 }

@@ -1,5 +1,5 @@
 //import
-import { HIDDEN, ADD_CART_ITEM, REMOVE_ITEM_FROM_CART, REMOVE_ITEM } from '../actions/types';
+import { HIDDEN, ADD_CART_ITEM, REMOVE_ITEM_FROM_CART, REMOVE_ITEM, CLEAR_CART } from '../actions/types';
 import { addItemToCart, removeItem } from '../../utils/cart';
 
 const initialState = {
@@ -20,6 +20,8 @@ export default function(state = initialState, action) {
 			return { ...state, cartItems: state.cartItems.filter(item => item.id !== action.payload.id) };
 		case REMOVE_ITEM:
 			return { ...state, cartItems: removeItem(state.cartItems, action.payload) };
+		case CLEAR_CART:
+			return { ...state, cartItems: [] };
 		default:
 			return state;
 	}

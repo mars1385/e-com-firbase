@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react';
 import './Auth.scss';
 import InputGroup from '../../components/form-input/InputGroup';
 import ButtonGroup from '../../components/form-input/ButtonGroup';
-import { auth, createUserDoc } from '../../utils/firebase/firebase';
 //redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { currentUserSelector } from '../../redux/selectors/userSelectors';
+import { registerUserStart } from '../../redux/actions/userActions';
 
 const Register = props => {
 	//component state
@@ -14,6 +14,8 @@ const Register = props => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
+	//redux
+	const dispatch = useDispatch();
 	//redux state
 	const currentUser = useSelector(currentUserSelector);
 	//component did mount & update
@@ -43,17 +45,13 @@ const Register = props => {
 			alert('Passwords dose not match');
 			return;
 		}
-
-		try {
-			const { user } = await auth.createUserWithEmailAndPassword(email, password);
-			await createUserDoc(user, { displayName: name });
-			setName('');
-			setEmail('');
-			setPassword('');
-			setConfirmPassword('');
-		} catch (error) {
-			console.log(error);
-		}
+		//register user
+		dispatch(registerUserStart({ displayName: name, email, password }));
+		//clear data
+		setName('');
+		setEmail('');
+		setPassword('');
+		setConfirmPassword('');
 	};
 	//jsx
 	return (

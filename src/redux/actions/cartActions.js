@@ -1,5 +1,5 @@
 //import
-import { HIDDEN, ADD_CART_ITEM, REMOVE_ITEM_FROM_CART, REMOVE_ITEM } from './types';
+import { HIDDEN, ADD_CART_ITEM, REMOVE_ITEM_FROM_CART, REMOVE_ITEM, CLEAR_CART } from './types';
 
 //toggle bag icon
 export const setToggle = () => {
@@ -31,3 +31,8 @@ export const removeItem = item => {
 		payload: item
 	};
 };
+
+//clear all items in cart
+export const clearCart = () => ({
+	type: CLEAR_CART
+});

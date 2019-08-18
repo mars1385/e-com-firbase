@@ -4,10 +4,9 @@ import './Auth.scss';
 import InputGroup from '../../components/form-input/InputGroup';
 import ButtonGroup from '../../components/form-input/ButtonGroup';
 //redux
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { currentUserSelector } from '../../redux/selectors/userSelectors';
-//auth
-import { auth, signInWithGoogle } from '../../utils/firebase/firebase';
+import { googleLoginStart, emailLoginStart } from '../../redux/actions/userActions';
 
 const Login = props => {
 	//component state
@@ -15,6 +14,7 @@ const Login = props => {
 	const [password, setPassword] = useState('');
 	//redux state
 	const currentUser = useSelector(currentUserSelector);
+	const dispatch = useDispatch();
 	//component did mount & update
 	useEffect(() => {
 		if (currentUser) {
@@ -34,13 +34,15 @@ const Login = props => {
 	//log in
 	const onSubmit = async e => {
 		e.preventDefault();
-		try {
-			await auth.signInWithEmailAndPassword(email, password);
-			setEmail('');
-			setPassword('');
-		} catch (error) {
-			console.log(error);
-		}
+		//send
+		const userAuth = {
+			email,
+			password
+		};
+		dispatch(emailLoginStart(userAuth));
+		//clear
+		setEmail('');
+		setPassword('');
 	};
 	//jsx
 	return (
@@ -51,7 +53,7 @@ const Login = props => {
 				<InputGroup label='password' type='password' name='password' value={password} onChange={onChange} />
 				<div className='buttons'>
 					<ButtonGroup type='submit'>Log in</ButtonGroup>
-					<ButtonGroup onClick={signInWithGoogle} googleSignIn>
+					<ButtonGroup type='button' onClick={() => dispatch(googleLoginStart())} googleSignIn>
 						Sign In with Google
 					</ButtonGroup>
 				</div>

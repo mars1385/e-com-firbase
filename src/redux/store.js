@@ -6,7 +6,7 @@ import createSagaMiddleware from 'redux-saga';
 //root reducer
 import rootReducer from './reducers';
 //saga
-import { setCollectionDataStart } from './sagas/shopSagas';
+import rootSaga from './sagas/rootSagas';
 
 const initialState = {};
 // create the saga middleware
@@ -22,7 +22,7 @@ const store = createStore(
 	)
 );
 
-sagaMiddleware.run(setCollectionDataStart);
+sagaMiddleware.run(rootSaga);
 
 const persistor = persistStore(store);
 

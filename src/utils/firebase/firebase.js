@@ -2,6 +2,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import { resolve, reject } from 'q';
 //config firebase
 const config = {};
 
@@ -67,14 +68,21 @@ export const addCollectionAndDoc = async (collectionName, objects) => {
 	return await batch.commit();
 };
 
+//user login ?
+export const getUserAuthSnapShot = () => {
+	return new Promise((resolve, reject) => {
+		const unsubscribe = auth.onAuthStateChanged(userAuth => {
+			unsubscribe();
+			resolve(userAuth);
+		}, reject);
+	});
+};
 //exports
 export const auth = firebase.auth();
 export const fireStore = firebase.firestore();
 
 //google auth
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
-
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
 
 export default firebase;

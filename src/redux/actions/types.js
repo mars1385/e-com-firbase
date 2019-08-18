@@ -1,8 +1,24 @@
-export const SET_CURRENT_USER = 'SET_CURRENT_USER';
+// sign in  types
+export const GOOGLE_LOGIN_START = 'GOOGLE_LOGIN_START';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const EMAIL_LOGIN_START = 'EMAIL_LOGIN_START';
+export const CHECK_USER_STATE = 'CHECK_USER_STATE';
+//register types
+export const REGISTER_START = 'REGISTER_START';
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAILED = 'REGISTER_FAILED';
+//sing out types
+export const SING_OUT_START = 'SING_OUT_START';
+export const SING_OUT_SUCCESS = 'SING_OUT_SUCCESS';
+export const SING_OUT_FAILED = 'SING_OUT_FAILED';
+//cart types
 export const HIDDEN = 'HIDDEN';
+export const CLEAR_CART = 'CLEAR_CART';
 export const ADD_CART_ITEM = 'ADD_CART_ITEM';
 export const REMOVE_ITEM_FROM_CART = 'REMOVE_ITEM_FROM_CART';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
+//shop types
 export const GET_COLLECTION_DATA_SUCCESS = 'GET_COLLECTION_DATA_SUCCESS';
 export const LOADING_DATA = 'LOADING_DATA';
 export const GET_COLLECTION_DATA_FAILED = 'GET_COLLECTION_DATA_FAILED';
