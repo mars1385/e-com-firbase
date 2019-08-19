@@ -24,7 +24,7 @@ function App() {
 	//component did mount
 	useEffect(() => {
 		store.dispatch(checkUserSate());
-	}, []);
+	}, [store]);
 	//jsx
 	return (
 		<Provider store={store}>

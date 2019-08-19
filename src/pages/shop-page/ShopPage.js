@@ -6,11 +6,7 @@ import Categories from '../categories/Categories';
 import Spinner from '../../components/spinner/Spinner';
 //redux
 import { createStructuredSelector } from 'reselect';
-import {
-	dataLoadingSelector,
-	errorMessageSelector,
-	isDataLoadedSelector
-} from '../../redux/selectors/shopSelectors';
+import { dataLoadingSelector, isDataLoadedSelector } from '../../redux/selectors/shopSelectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoadingData } from '../../redux/actions/shopActions';
 
@@ -20,10 +16,9 @@ const CategoriesWithSpinner = Spinner(Categories);
 
 const ShopPage = ({ match }) => {
 	//redux
-	const { loading, errorMessage, isDataLoaded } = useSelector(
+	const { loading, isDataLoaded } = useSelector(
 		createStructuredSelector({
 			loading: dataLoadingSelector,
-			errorMessage: errorMessageSelector,
 			isDataLoaded: isDataLoadedSelector
 		})
 	);
@@ -31,7 +26,7 @@ const ShopPage = ({ match }) => {
 	//component did mount
 	useEffect(() => {
 		dispatch(setLoadingData());
-	}, []);
+	}, [dispatch]);
 	//jsx
 	return (
 		<div className='shop'>

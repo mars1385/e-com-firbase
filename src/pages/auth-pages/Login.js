@@ -20,7 +20,7 @@ const Login = props => {
 		if (currentUser) {
 			props.history.push('/');
 		}
-	});
+	}, [currentUser, props.history]);
 	//tracking user input change
 	const onChange = e => {
 		const { name, value } = e.target;

@@ -4,7 +4,9 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import { resolve, reject } from 'q';
 //config firebase
-const config = {};
+const config = {
+
+};
 
 firebase.initializeApp(config);
 

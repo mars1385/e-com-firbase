@@ -23,7 +23,7 @@ const Register = props => {
 		if (currentUser) {
 			props.history.push('/');
 		}
-	});
+	}, [currentUser, props.history]);
 	//register filed change
 	const onChange = e => {
 		const { name, value } = e.target;
