@@ -1,8 +1,18 @@
 .login,
 .register {
-	width: 30vw;
+	width: 40vw;
 	margin-bottom: 2rem;
 
+	@media screen and (max-width: 980px) {
+		width: 50vw;
+	}
+	@media screen and (max-width: 680px) {
+		width: 80vw;
+	}
+
+	@media screen and (max-width: 430px) {
+		width: 100vw;
+	}
 	.title {
 		margin: 10px 0;
 	}

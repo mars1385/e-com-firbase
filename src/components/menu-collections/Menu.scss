@@ -21,6 +21,10 @@
 		height: 300px;
 	}
 
+	@media screen and (max-width: 800px) {
+		height: 200px !important;
+	}
+
 	&:hover {
 		cursor: pointer;
 		& .background-image {

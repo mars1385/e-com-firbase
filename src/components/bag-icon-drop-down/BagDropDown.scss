@@ -10,6 +10,10 @@
 	top: 60px;
 	right: 80px;
 	z-index: 5;
+	@media screen and (max-width: 800px) {
+		right: 30px;
+		height: 280px;
+	}
 
 	.bag-items {
 		height: 240px;

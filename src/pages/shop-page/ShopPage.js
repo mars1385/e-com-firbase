@@ -44,7 +44,7 @@ const ShopPage = ({ match }) => {
 						render={props => <CategoriesWithSpinner loading={!isDataLoaded} {...props} />}
 					/>
 					{/* end */}
-					<div className='col-md-3 order-2'>
+					<div className='col-md-3  '>
 						<div className='border mb-4 rounded p-4'>
 							<h2 className='mb-4 h6 text-uppercase text-black d-block text-center'>Categories</h2>
 							<ul className='list-unstyled b-0  text-center'>

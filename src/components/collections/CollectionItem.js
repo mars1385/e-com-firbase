@@ -17,7 +17,7 @@ const CollectionItem = ({ item }) => {
 	};
 	//jsx
 	return (
-		<div className='col-lg-5 col-md-5 item-entry mb-5 mx-auto  collection-item'>
+		<div className='col-lg-4 col-md-5 col-sm-6 col-6  item-entry mb-5 mx-auto  collection-item'>
 			<div className='image rounded' style={{ backgroundImage: `url(${imageUrl})` }} />
 			<div className='collection-footer'>
 				<span className='name'>{name}</span>

@@ -2,11 +2,9 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import { resolve, reject } from 'q';
-//config firebase
-const config = {
 
-};
+//config firebase
+const config = {};
 
 firebase.initializeApp(config);
 

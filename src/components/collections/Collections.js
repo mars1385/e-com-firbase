@@ -10,7 +10,7 @@ const Collections = () => {
 	const collections = useSelector(shopCollectionPreviewSelector);
 	//jsx
 	return (
-		<div className='col-md-9 order-1'>
+		<div className={`${window.innerWidth < 600 ? 'order-12' : ''} col-md-9`}>
 			<div className='row align'>
 				<div className='col-md-12 mb-5'>
 					<div className='float-md-left'>

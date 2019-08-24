@@ -15,7 +15,12 @@
 		color: black;
 		background-color: white;
 		border: 1px solid black;
-
+		@media screen and (max-width: 800px) {
+			display: block;
+			opacity: 0.9;
+			min-width: unset;
+			padding: 0 10px;
+		}
 		&:hover {
 			background-color: black;
 			color: white;
@@ -31,6 +36,18 @@
 		.custom-btn {
 			opacity: 0.85;
 			display: flex;
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		&:hover {
+			.image {
+				opacity: unset;
+			}
+
+			.custom-btn {
+				opacity: unset;
+			}
 		}
 	}
 
