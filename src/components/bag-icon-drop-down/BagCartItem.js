@@ -19,4 +19,4 @@ const BagCartItem = ({ item }) => {
 	);
 };
 
-export default BagCartItem;
+export default React.memo(BagCartItem);
